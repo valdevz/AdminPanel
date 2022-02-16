@@ -1,0 +1,13 @@
+#app:not(.logOut) > .container {
+    margin-left: 280px!important;
+}
+
+#app .container.collapsed {
+    margin-left: auto !important;
+    transition: 0.5s;
+}
+
+#app .container {
+    margin-left: 280px !important;
+    transition: 0.5s;
+}

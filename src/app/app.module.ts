@@ -4,10 +4,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { PanelMenuComponent } from './components/shared/panel-menu/panel-menu.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PanelMenuComponent
   ],
   imports: [
     BrowserModule,

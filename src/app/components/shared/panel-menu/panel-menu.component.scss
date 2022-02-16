@@ -1,0 +1,27 @@
+#adminMenu {
+    position: fixed;
+    left: 0;
+    z-index: 1000;
+    height: 100%;
+    transition: 0.5s;
+    .expand-collaps-menu {
+        position: absolute;
+        right: -16px;
+        background-color: rgba(var(--bs-light-rgb),var(--bs-bg-opacity))!important;
+        border: 0;
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+        color: #212529;
+    }
+    .theme-selector {
+        border: 0;
+        background: none;
+        position: absolute;
+        right: 14px;
+        top: 19px;
+    }
+}
+
+#adminMenu.collapsed {
+    left: -270px;
+}
