@@ -22,7 +22,6 @@ export class UsersComponent implements OnInit {
         if(data){
           this.isLoading = false;
           this.users = data.data;
-          console.log(this.users)
         }
       },
       error : err => {

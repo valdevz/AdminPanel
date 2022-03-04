@@ -22,7 +22,6 @@ export class ProductsComponent implements OnInit {
         if(data){
           this.isLoading = false;
           this.products = data;
-          console.log(this.products)
         }
       },
       error : err => {
