@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Icon } from '@fortawesome/fontawesome-svg-core';
-import { faAngleRight, faAngleLeft, faHouse, faTableColumns, faUserAstronaut, faNewspaper, faBox, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faCode, faAngleRight, faAngleLeft, faSpinner, faTableColumns, faUserAstronaut, faNewspaper, faBox, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-panel-menu',
@@ -10,15 +10,19 @@ import { faAngleRight, faAngleLeft, faHouse, faTableColumns, faUserAstronaut, fa
 export class PanelMenuComponent implements OnInit {
   faAngleLeft     : IconDefinition = faAngleLeft;
   faAngleRight    : IconDefinition = faAngleRight;
-  faHouse         : IconDefinition = faHouse;
+  faSpinner         : IconDefinition = faSpinner;
   faTableColumns  : IconDefinition = faTableColumns;
   faNewspaper     : IconDefinition = faNewspaper;
   faBox           : IconDefinition = faBox;
-  faUserAstronaut : IconDefinition = faUserAstronaut
+  faUserAstronaut : IconDefinition = faUserAstronaut;
+  faCode          : IconDefinition = faCode;
   collapsed : boolean = true;
+  limitForFloatMenu : number = 1050;
   constructor() { }
 
   ngOnInit(): void {
+    let screenSize = document.body.offsetWidth;
+    screenSize < this.limitForFloatMenu ? this.collapseMenu() : false;
   }
 
   collapseMenu() {

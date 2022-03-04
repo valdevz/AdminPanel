@@ -1,0 +1,62 @@
+<app-loader *ngIf="isProfileLoaded && arePostsLoaded"></app-loader>
+<div class="row align-items-start">
+    <div class="container info mt-5 mb-3 col-sm-10 col-md-4 bg-light p-4 rounded-3" *ngIf="!isProfileLoaded && !arePostsLoaded" [ngClass]="{'d-none' : isProfileLoaded && arePostsLoaded}">
+        <div  class="d-flex align-items-start" id="picturebox">
+            <img  src="{{userDetail['picture']}}" class="rounded d-inline-block" alt=".user picture">
+            <div class="d-inline-block mx-3">
+                <h4 class="">{{userDetail.firstName}} {{userDetail.lastName}}</h4>
+                <p class="link-secondary">{{userDetail.gender | titlecase}}</p>
+            </div>
+        </div>
+        <p class="link-secondary">Miembro desde: {{userDetail.registerDate | date: 'yyyy'}}</p>
+        <hr>
+        <div class="infoContainer">
+            <address>
+                <a class="link-secondary" href="mailto:{{userDetail.email}}">{{userDetail.email | transform:20}} <fa-icon class="link-info"[icon]="faEnvelope"></fa-icon></a><br>
+                <a class="link-secondary" href="tel:+{{userDetail.phone}}">{{userDetail.phone}} <fa-icon class="link-info" [icon]="faPhone"></fa-icon></a>
+            </address>
+            <br>
+            <div class="address">
+                <fa-icon class="link-info" [icon]="faHouse"></fa-icon>
+                <strong class="mx-2 link-info">Dirección:</strong>
+                <p class="l-space">Calle: {{userDetail.location.street}}</p>
+                <p class="l-space">Ciudad: {{userDetail.location.city}}</p>
+                <p class="l-space">Estado: {{userDetail.location.state}}</p>
+                <p class="l-space">País: {{userDetail.location.country}}</p>
+                <p class="l-space">Zona Horaria: {{userDetail.location.timezone}}</p>
+            </div>
+        </div>
+        <app-title [Title]="title"></app-title>
+    </div>
+    
+    <div class="container mt-5 mb-3 col-sm-10 col-md-8 p-4 rounded-3 pt-0 post-container" [ngClass]="{'d-none' : isProfileLoaded && arePostsLoaded}">
+        <div *ngFor="let post of userPosts | keyvalue; let i = index" [ngClass]="{'mt-0': i == 0}" class="bg-light p-4 rounded-3 m-2 mb-4">
+            <div id="picturebox" class="d-inline-block col-sm-3">
+                <img  src="{{post.value['owner']['picture']}}" class=" rounded d-inline-block" alt=".user picture">
+            </div>
+            <div class="d-inline-block col-sm-9 align-top mt-2">
+                <div class="d-flex flex-column">
+                    <div class="position-relative">
+                        <h6 class="card-subtitle text-muted">{{post.value["owner"]["firstName"]}} {{post.value["owner"]["lastName"]}}</h6>
+                        <span class="position-absolute postDate">{{post.value['publishDate'] | date}}</span>
+                    </div>
+                    <p class="card-body text-muted p-0">{{post.value["text"]}} {{post.value["owner"]["lastName"]}}</p>
+                    <div class="image-container position-relative rounded-3 text-center d-flex align-items-center justify-content-center" (click)="openModal(post.value['image'])">
+                        <img class="" src="{{post.value['image']}}" alt="">
+                    </div>
+                    <div class="mt-3">
+                        <span class="d-inline-block me-2 hashtag" *ngFor="let item of post.value['tags']">#{{item}}</span>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <span> <fa-icon class="likes" [icon]="faThumbsUp"></fa-icon> {{post.value["likes"]}}</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="modalPreview" (click)="closeModal($event)" class="modal-container position-fixed m-auto d-flex align-items-center justify-content-center">
+    <span class="closeView position-absolute px-3" (click)="closeModal($event)">x</span>
+    <img src="{{modalImage}}" alt="post image">
+</div>

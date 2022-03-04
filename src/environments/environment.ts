@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  covidApi: 'https://corona.lmao.ninja/',
+  ordersApi: 'https://fakestoreapi.com/products',
+  usersApi: 'https://dummyapi.io/data/v1/user',
+  userApiKey: 'Your-apiKey'
 };
 
 /*

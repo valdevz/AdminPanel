@@ -1,4 +1,19 @@
-# AdminPanel
+# Admin Panel by Valdevz
+This is a sample dashboard or admin panel created with Angular and Bootstrap to make easy pages that we use to see in an interface of this type, feel free to download the project or copy and paste the code that you could need.
+
+Well, to run the project you need to follow the angular steps (if you don't know they, you can see they at the bottom of this readme). 
+
+## Apikey required (free)
+The only modification that you need to do for Users page and see users profiles is keys.ts (on the root of the project) where you need to place your api key from [Dummy API](https://dummyapi.io/) its totally free, you just need to create an account and that's all.
+
+For the others services you don't need an apiKey, they are free.
+
+happy coding ✌
+
+Valdevz
+
+
+# Angular Readme 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.2.
 

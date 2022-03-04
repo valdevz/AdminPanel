@@ -1,4 +1,4 @@
-<div id="app">
+<div id="app" (window:resize)="onResize($event)" [ngClass]="{'float-menu': mobileSize}">
     <div class="container">
         <app-panel-menu></app-panel-menu>
         <router-outlet></router-outlet>

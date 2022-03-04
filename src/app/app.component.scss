@@ -1,13 +1,13 @@
-#app:not(.logOut) > .container {
-    margin-left: 280px!important;
+#app:not(.logOut):not(.float-menu) > .container:not(.collapsed) {
+    padding-left: 280px!important;
 }
 
-#app .container.collapsed {
-    margin-left: auto !important;
+#app:not(.float-menu) .container.collapsed {
+    padding-left: 0 !important;
     transition: 0.5s;
 }
 
-#app .container {
-    margin-left: 280px !important;
+#app:not(.float-menu) .container {
+    padding-left: 280px !important;
     transition: 0.5s;
 }

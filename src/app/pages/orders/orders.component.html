@@ -1,0 +1,53 @@
+<app-title [Title]="title"></app-title>
+
+<app-loader *ngIf="isLoading"></app-loader>
+
+<div  [ngClass]="{'d-none' : isLoading}">
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="text-center" scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th class="text-center" scope="col">Precio</th>
+            <th class="text-center" scope="col">Categoría</th>
+            <th class="text-center" scope="col">Estrellas</th>
+            <th class="text-center" scope="col">Imagen</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders | keyvalue; let i = index">
+              <th scope="row">{{i +1}}</th>
+              <td>{{ order.value["title"] }}</td>
+              <td class="text-center">${{ order.value["price"] }}</td>
+              <td class="text-center">{{ order.value["category"] | titlecase }}</td>
+              <td class="text-center">{{ order.value["rating"]["rate"] }}⭐</td>
+              <td class="text-center"><img (click)="triggerModal(modalData, order.value)" width="50" height="50" src="{{order.value['image']}}" alt=""></td>
+              <!-- <th>1</th> -->
+          </tr>
+        </tbody>
+      </table>
+</div>
+
+<!-- <button class="btn btn-danger" (click)="triggerModal(modalData, {})">Open Modal</button> -->
+
+<ng-template #modalData let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Información del producto</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h2 class="h2">{{modalProd.title}}</h2>
+    <div class="text-center my-4">
+      <img height="250" src="{{modalProd.image}}" alt="">
+    </div>
+    <div class="d-inline-block alert alert-info" role="alert">
+      ${{modalProd.price}}
+    </div>
+    <p class="">{{modalProd.description}}</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Close</button>
+  </div>
+</ng-template>

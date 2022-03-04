@@ -1,0 +1,24 @@
+<app-title [Title]="title"></app-title>
+
+<app-loader *ngIf="isLoading"></app-loader>
+
+<div class="container mt-5 mb-3" [ngClass]="{'d-none' : isLoading}">
+    <div class="row">
+        <div class="col-sm-6 col-md-4" *ngFor="let prod of products | keyvalue; let i = index">
+            <div class="card p-3 mb-2">
+                <img class="mx-auto card-img-top" width="254" src="{{prod.value['image']}}" alt="Card image cap">
+                <div class="card-body">
+                <h5 class="card-title">{{prod.value["title"] | transform:25}}</h5>
+                <p class="card-text">{{prod.value["description"] | transform:150}}</p>
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-inline-block alert alert-info" role="alert">
+                        ${{prod.value["price"]}}
+                      </div>
+                    <td class="text-center d-inline-block mb-3">{{ prod.value["rating"]["rate"] }}⭐</td>
+                </div>
+                <a href="#" class="btn btn-primary">Agregar al carrito</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

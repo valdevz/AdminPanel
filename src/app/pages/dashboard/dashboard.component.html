@@ -1,0 +1,45 @@
+<app-title [Title]="title"></app-title>
+
+<app-loader *ngIf="isLoading"></app-loader>
+
+<div  [ngClass]="{'d-none' : isLoading}">
+    <div class="row mb-5 justify-content-between">
+        <div class="col-sm-4 col-md-3 rounded-3 p-3 bg-light d-flex align-items-center">
+            <div class="jumbotron jumbotron-fluid mx-md-auto m-auto">
+                <div class="container text-center px-0">
+                    <p class="lead">Casos Críticos.</p>
+                  <h1 class="display-4">{{critical}}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-md-4 rounded-3 p-3 bg-light mx-md-auto offset-md-2">
+            <div id="divChart" class="mx-md-auto m-auto" style="height:245px; width:200px">
+                <p class="lead text-center">Datos por millón.</p>
+                <canvas #pieCanvas style="height:400px; width:400px"></canvas>
+            </div>  
+        </div>
+        <div class="col-sm-4 col-md-3 rounded-3 p-3 bg-light d-flex align-items-center">
+            <div class="jumbotron jumbotron-fluid mx-md-auto m-auto">
+                <div class="container text-center px-0">
+                    <p class="lead">Fallecimientos del día de hoy.</p>
+                  <h1 class="display-4">{{todayDeaths}}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row pb-5">
+        <div class="col-sm-6 col-md-5 offset-md-1 rounded-3 p-3 mx-md-auto bg-light">
+            <div id="divChart" class="m-auto" style="height:270px; width:270px">
+                <canvas #doughnutCanvas style="height:200px; width: 200px;"></canvas>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-5 offset-md-1 rounded-3 p-3 mx-md-auto bg-light">
+            <div id="divChart" class="m-auto" style="height:270px; width:270px">
+                <canvas #barCanvas style="height:200px; width:200px"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <div class="alert alert-primary d-inline-block" role="alert">Última actualización: {{date | date}}</div>
+</div>

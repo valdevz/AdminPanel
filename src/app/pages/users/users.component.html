@@ -1,0 +1,17 @@
+<app-title [Title]="title"></app-title>
+
+<app-loader *ngIf="isLoading"></app-loader>
+
+<div class="container mt-5 mb-3" [ngClass]="{'d-none' : isLoading}">
+    <div class="row">
+        <div class="col-md-4 col-sm-6" *ngFor="let user of users | keyvalue; let i = index">
+            <div class="card">
+                <img src="{{user.value['picture']}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{user.value["title"]}} {{user.value["firstName"]}} {{user.value["lastName"]}}</h5>
+                    <a  routerLink="/user/{{user.value['id']}}" class="btn btn-primary">Ver perfil</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
